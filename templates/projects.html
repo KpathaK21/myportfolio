@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Kunj Pathak</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Projects</h1>
+    </header>
+
+    <main>
+        <div class="projects">
+            {{ range .Projects }}
+            <div class="project">
+                <h2>{{ .Name }}</h2>
+                <p><strong>Language(s):</strong> {{ .Language }}</p>
+                <a href="{{ .URL }}" target="_blank">View Project</a>
+            </div>
+            {{ end }}
+        </div>
+    </main>
+
+    <footer>
+        <p><a href="/">Back to Home</a></p>
+    </footer>
+    <script src="/static/script.js"></script>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="en"> -->
+<!-- <head> -->
+<!--     <meta charset="UTF-8"> -->
+<!--     <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<!--     <title>Kunj Pathak - Projects</title> -->
+<!--     <link rel="stylesheet" href="/static/style.css"> -->
+<!-- </head> -->
+<!-- <body> -->
+<!--     <header> -->
+<!--         <h1>Projects</h1> -->
+<!--     </header> -->
+<!--      -->
+<!--     <main> -->
+<!--         <div class="projects"> -->
+<!--             {{ range .Projects }} -->
+<!--             <div class="project"> -->
+<!--                 <h2>{{ .Name }}</h2> -->
+<!--                 <p><strong>Language(s):</strong> {{ .Language }}</p> -->
+<!--                 <a href="{{ .URL }}" target="_blank">View Project</a> -->
+<!--             </div> -->
+<!--             {{ end }} -->
+<!--         </div> -->
+<!--     </main> -->
+<!--  -->
+<!--     <footer> -->
+<!--         <p>Copyright © 2023 Kunj Pathak</p> -->
+<!--     </footer> -->
+<!-- </body> -->
+<!-- </html> -->

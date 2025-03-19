@@ -1,0 +1,187 @@
+/* Basic Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Off-white background */
+    color: #333; /* Dark text for light mode */
+    margin: 0;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative; /* For positioning the stars */
+}
+
+h1 {
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Mode Toggle Button */
+.mode-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    background-color: #2B2B2B; /* Dark gray for moon */
+    box-shadow: 0 0 8px rgba(255,255,255,0.8); /* Glow effect for moon */
+}
+
+.mode-toggle::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 12px 12px, #2B2B2B 20px, transparent 21px);
+    clip-path: circle(50% at 50% 50%);
+    transition: opacity 0.3s, background 0.3s;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #000; /* Dark black background */
+    color: #fff; /* White text for all non-specified text elements */
+}
+
+body.dark-mode .mode-toggle {
+    background-color: #FFD700; /* Yellow for sun */
+    box-shadow: 0 0 8px rgba(255,215,0,0.8); /* Glow effect for sun */
+}
+
+body.dark-mode .mode-toggle::before {
+    background: radial-gradient(circle, #FFD700 0%, #FFD700 40%, transparent 42%);
+    clip-path: polygon(0 50%, 100% 50%, 50% 0, 50% 100%);
+}
+
+body.dark-mode, 
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode p, 
+body.dark-mode a {
+    color: #fff; /* White text in dark mode */
+}
+
+/* Projects Layout */
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.project {
+    margin: 15px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 300px;
+    text-align: center;
+    background: white;
+    border-radius: 8px;
+}
+
+body.dark-mode .project {
+    background-color: #424242; /* Grey boxes for projects in dark mode */
+    color: #fff; /* White text for readability */
+}
+
+.project h2 {
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.project p {
+    font-size: 14px;
+    color: #666;
+}
+
+.project a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.project a:hover {
+    background-color: #0056b3;
+}
+
+/* Stars Animation in Dark Mode */
+.dark-mode .stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/static/stars.png') repeat;
+    animation: moveStars 200s linear infinite;
+    pointer-events: none; /* Allows clicks to pass through */
+    display: none;
+    z-index: -1;
+}
+
+@keyframes moveStars {
+    from { background-position: 0 0; }
+    to { background-position: 10000px 5000px; } /* Large values for continuous movement */
+}
+
+.navigation {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.navigation a {
+    padding: 5px 10px;
+    margin: 0 10px;
+    font-size: 16px;
+    color: #007BFF; /* Link color */
+    text-decoration: none; /* Remove underline */
+    cursor: pointer;
+}
+
+.navigation a:hover {
+    text-decoration: underline; /* Only underline on hover */
+}
+
+#content-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  /* Takes the full height of the viewport */
+    text-align: center;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;  /* Horizontally center */
+    align-items: center;      /* Vertically center */
+    height: 70vh;             /* Ensure it takes most of the screen */
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Space between icons */
+}
+
+.icon-link {
+    font-size: 40px; /* Make icons bigger */
+    color: #007BFF; /* Default color */
+    transition: transform 0.3s ease-in-out;
+}
+
+.icon-link:hover {
+    transform: scale(1.2); /* Slight zoom effect */
+}
