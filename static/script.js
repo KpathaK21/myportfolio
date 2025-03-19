@@ -23,6 +23,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    let images = document.querySelectorAll(".random-image");
+    let index = 0;
+
+    function showRandomImage() {
+        images.forEach(img => {
+            img.style.opacity = "0"; // Hide all images
+        });
+
+        setTimeout(() => {
+            let currentImage = images[index];
+
+            // Ensure images don’t go outside the screen
+            let maxX = window.innerWidth - currentImage.clientWidth - 20;
+            let maxY = window.innerHeight - currentImage.clientHeight - 20;
+
+            let randomX = Math.random() * maxX;
+            let randomY = Math.random() * maxY;
+
+            currentImage.style.left = `${randomX}px`;
+            currentImage.style.top = `${randomY}px`;
+            currentImage.style.opacity = "1";
+
+            index = (index + 1) % images.length;
+        }, 300);
+    }
+
+    setInterval(showRandomImage, 3000);
+    showRandomImage();
+});
+
+
 // Function to load projects dynamically
 function loadProjects() {
     fetch("/projects")

@@ -185,3 +185,46 @@ body.dark-mode .project {
 .icon-link:hover {
     transform: scale(1.2); /* Slight zoom effect */
 }
+/* General Image Styles */
+.random-image {
+    position: absolute;
+    width: auto;
+    max-width: 250px; /* Prevent oversized images */
+    height: auto;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    z-index: 1000;
+    mix-blend-mode: normal;
+}
+
+/* Dark Mode: Convert Only Black SVGs to White */
+body.dark-mode .random-image[src$=".svg"] {
+    filter: brightness(0) invert(1); /* Invert black to white */
+}
+
+/* Exclude Colored SVGs */
+body.dark-mode .random-image[src$=".svg"].no-invert {
+    filter: none !important; /* Keeps original color */
+}
+
+/* Ensure PNG, JPG, and Other Formats Aren’t Affected */
+body.dark-mode .random-image:not([src$=".svg"]) {
+    filter: none; /* Keep non-SVG images unchanged */
+}
+
+/* Keep Images Inside the Screen */
+.random-image-container {
+    position: absolute;
+    width: 100%;
+    height: 100vh; /* Full screen height */
+    overflow: hidden;
+}
+
+
+
+/* Floating animation effect */
+@keyframes floatImage {
+    0% { transform: translate(0px, 0px); }
+    50% { transform: translate(10px, -10px); }
+    100% { transform: translate(0px, 0px); }
+}
